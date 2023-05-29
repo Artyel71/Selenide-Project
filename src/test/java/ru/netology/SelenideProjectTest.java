@@ -25,19 +25,20 @@ public class SelenideProjectTest {
 
     @BeforeAll
     static void setupAll() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        //System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
     }
 
 
     @BeforeEach
     void setUp() {
-        // driver = new ChromeDriver();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
+      //  ChromeOptions options = new ChromeOptions();
+       // options.addArguments("--disable-dev-shm-usage");
+      //  options.addArguments("--no-sandbox");
+      //  options.addArguments("--headless");
+       // driver = new ChromeDriver(options);
+
     }
 
     @AfterEach
