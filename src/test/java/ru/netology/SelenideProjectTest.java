@@ -25,8 +25,8 @@ public class SelenideProjectTest {
 
     @BeforeAll
     static void setupAll() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-       // WebDriverManager.chromedriver().setup();
+       // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
     }
 
 
