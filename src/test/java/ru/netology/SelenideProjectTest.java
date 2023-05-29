@@ -25,7 +25,7 @@ public class SelenideProjectTest {
 
     @BeforeAll
     static void setupAll() {
-        // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -48,7 +48,7 @@ public class SelenideProjectTest {
 
     @Test
     void shouldTestForm() {
-        open("http://localhost:7777");
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Казань");
         $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.CONTROL, Keys.BACK_SPACE));
         $("[data-test-id=date] input").setValue("15.06.2023");
