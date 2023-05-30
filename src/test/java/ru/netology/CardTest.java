@@ -19,27 +19,28 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class SelenideProjectTest {
-
-
+public class CardTest {
     private WebDriver driver;
 
     @BeforeAll
-    static void setupAll() {
-       // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+    static void setUpAll() {
+        // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        // ChromeOptions options = new ChromeOptions();
+        // options.addArguments("--disable-dev-shm-usage");
+        // options.addArguments("--no-sandbox");
+        // options.addArguments("--headless");
+        // driver = new ChromeDriver(options);
         WebDriverManager.chromedriver().setup();
     }
 
-
     @BeforeEach
     void setUp() {
-        driver = new ChromeDriver();
+        // driver = new ChromeDriver();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-
     }
 
     @AfterEach
@@ -49,16 +50,19 @@ public class SelenideProjectTest {
     }
 
     @Test
-    void shouldTestForm() {
-        open("http://localhost:9999");
+    void shouldTestSomething() {
+
+        open("http://localhost:9999/");
         $("[data-test-id=city] input").setValue("Казань");
-        $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.CONTROL, Keys.BACK_SPACE));
-        $("[data-test-id=date] input").setValue("15.06.2023");
-        $("[data-test-id=name] input").setValue("Тарусов Иван");
-        $("[data-test-id=phone] input").setValue("+78966554432");
-        $("[data-test-id=agreement]").click();
+        // $("[data-test-id=date] input").click();
+        $("[data-test-id=date] input").doubleClick();
+        $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
+        $("[data-test-id=date] input").setValue("15.11.2023");
+        $("[data-test-id=name] input").setValue("Джек Дэниэлс");
+        $("[name='phone'").setValue("+73456789997");
+        $("[data-test-id=agreement").click();
         $(By.className("button")).click();
         $(withText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
+
     }
 }
-
