@@ -14,8 +14,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class SelenideProjectTest {
@@ -25,7 +26,7 @@ public class SelenideProjectTest {
 
     @BeforeAll
     static void setupAll() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+       // System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
     }
 
@@ -56,7 +57,7 @@ public class SelenideProjectTest {
         $("[data-test-id=name] input").setValue("Тарусов Иван");
         $("[data-test-id=phone] input").setValue("+78966554432");
         $("[data-test-id=agreement]").click();
-        $(byClassName("button")).click();
+        $(By.className("button")).click();
         $(withText("Успешно!")).shouldBe(visible, Duration.ofSeconds(15));
     }
 }
