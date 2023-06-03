@@ -17,27 +17,27 @@ import static com.codeborne.selenide.Selenide.open;
 public class CardTest {
 
 
-
-    public String generateDate(int days) {
+    public String generateDate(int days, String s) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
 
     @Test
     void shouldTestSomething() {
-        String planningDate = generateDate(3);
+
 
         open("http://localhost:9999/");
         $("[data-test-id=city] input").setValue("Казань");
         $("[data-test-id=date] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
+        String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id=date] input").setValue(planningDate);
         $("[data-test-id=name] input").setValue("Джек Дэниэлс");
         $("[name='phone'").setValue("+73456789997");
         $("[data-test-id=agreement").click();
         $(byClassName("button")).click();
-        $(withText("Встреча")).shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate), Duration.ofSeconds(15))
-                .shouldBe(Condition.visible);
+        $(withText("Встреча")).shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate),
+                Duration.ofSeconds(15)).shouldBe(Condition.visible);
 
     }
 }
