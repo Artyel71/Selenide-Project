@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Selectors.byClassName;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -33,10 +32,10 @@ public class CardTest {
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id=date] input").setValue(planningDate);
         $("[data-test-id=name] input").setValue("Джек Дэниэлс");
-        $("[name='phone'").setValue("+73456789997");
+        $("[data-test-id=phone] input").setValue("+73456789997");
         $("[data-test-id=agreement").click();
         $(byClassName("button")).click();
-        $(withText("Встреча")).shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate),
+        $("[data-test-id=notification]").shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate),
                 Duration.ofSeconds(15)).shouldBe(Condition.visible);
 
     }
